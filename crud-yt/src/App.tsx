@@ -1,9 +1,7 @@
-export const App = () => {
-  return (
-    <>
-      <div className="App">Teste</div>
-    </>
-  );
+import { AppRoutes } from "./routes";
+
+const App = () => {
+  return <AppRoutes />;
 };
 
 export default App;
