@@ -26,6 +26,7 @@ export default defineConfig([
         "error",
         { allowConstantExport: true },
       ],
+      "react/react-in-jsx-scope": "off",
     },
   },
 ]);

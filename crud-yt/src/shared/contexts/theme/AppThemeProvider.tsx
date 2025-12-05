@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from "react";
 import { Box, ThemeProvider } from "@mui/material";
-import { DarkTheme, LightTheme } from "../themes";
+import { DarkTheme, LightTheme } from "../../themes";
 import { ThemeContext } from "./ThemeContext";
 
 export const AppThemeProvider: React.FC<{ children: React.ReactNode }> = ({
