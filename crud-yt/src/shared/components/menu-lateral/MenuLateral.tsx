@@ -14,6 +14,7 @@ import { Box } from "@mui/system";
 import { useAppDrawerContext } from "../../contexts/drawer/useAppDrawerContext";
 import { useMatch, useNavigate, useResolvedPath } from "react-router-dom";
 import { useEffect } from "react";
+import { useAppThemeContext } from "../../contexts/theme/useAppThemeContext";
 
 interface IListItemLinkProps {
   icon: string;
@@ -61,6 +62,7 @@ export const MenuLateral: React.FC<{ children: React.ReactNode }> = ({
 
   const { isDrawerOpen, toggleDrawerOpen, drawerOptions, setDrawerOpen } =
     useAppDrawerContext();
+  const { toggleTheme } = useAppThemeContext();
 
   useEffect(() => {
     if (smDown) {
@@ -107,6 +109,17 @@ export const MenuLateral: React.FC<{ children: React.ReactNode }> = ({
                   onClick={smDown ? toggleDrawerOpen : undefined}
                 />
               ))}
+            </List>
+          </Box>
+
+          <Box>
+            <List component="nav">
+              <ListItemButton onClick={toggleTheme}>
+                <ListItemIcon>
+                  <Icon>dark_mode</Icon>
+                </ListItemIcon>
+                <ListItemText primary="Alternar Tema" />
+              </ListItemButton>
             </List>
           </Box>
         </Box>
