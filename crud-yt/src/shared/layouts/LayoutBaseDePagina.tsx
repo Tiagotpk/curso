@@ -17,9 +17,14 @@ interface ILayoutBaseDePagina {
 export const LayoutBaseDePagina: React.FC<ILayoutBaseDePagina> = ({
   children,
   titulo,
+  barraDeFerramentas,
 }) => {
   const smDown = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"));
+
+  const mdDown = useMediaQuery((theme: Theme) => theme.breakpoints.down("md"));
+
   const theme = useTheme();
+
   const { toggleDrawerOpen } = useAppDrawerContext();
 
   return (
@@ -28,7 +33,7 @@ export const LayoutBaseDePagina: React.FC<ILayoutBaseDePagina> = ({
         padding={1}
         display="flex"
         alignItems="center"
-        height={theme.spacing(5)}
+        height={theme.spacing(smDown ? 6 : mdDown ? 8 : 12)}
         gap={1}
       >
         {smDown && (
@@ -36,14 +41,22 @@ export const LayoutBaseDePagina: React.FC<ILayoutBaseDePagina> = ({
             <Icon>menu</Icon>
           </IconButton>
         )}
-        <Typography variant="h5" fontWeight="bold">
+        <Typography
+          variant={smDown ? "h5" : mdDown ? "h4" : "h3"}
+          fontWeight="bold"
+          whiteSpace="nowrap"
+          overflow="hidden"
+          textOverflow="ellipsis"
+        >
           {titulo}
         </Typography>
       </Box>
 
-      <Box>Barra de Ferramentas</Box>
+      {barraDeFerramentas && <Box>{barraDeFerramentas}</Box>}
 
-      <Box>{children}</Box>
+      <Box flex={1} overflow="auto">
+        {children}
+      </Box>
     </Box>
   );
 };
